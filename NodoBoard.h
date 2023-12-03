@@ -16,6 +16,7 @@ class NodoBoard {
     void addSon(NodoBoard* nodoBoard);
     int getShift();
     void setShift(int i);
+    void clearHijos();
 
 
 };
