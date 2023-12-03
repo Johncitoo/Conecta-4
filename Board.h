@@ -4,11 +4,11 @@ using namespace std;
 
 class Board {
     private:
-        string board[6][7];
+        int board[6][7] {0};
     
     public:
         Board();
-        void addDisk(int numCol);
+        void addDisk(int numCol,Player* player);
         void printBoard();
 
 };
