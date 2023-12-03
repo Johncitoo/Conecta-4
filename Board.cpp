@@ -1,7 +1,7 @@
-#pragma once;
-#include "Board.h";
+#pragma once
+#include "Board.h"
 #include "Player.cpp"
-#include <iostream>;
+#include <iostream>
 
 using namespace std;
 
@@ -9,34 +9,45 @@ Board::Board() {}
 
 void Board::addDisk(int numCol, int numPlayer) {
 
-    for (int i = 5; i >= 0; --i) {
-            if (board[i][numCol] == 0) {
-                board[i][numCol] = numPlayer;
-            }
+    for (int i = rows - 1; i >= 0; --i) {
+        if (board[i][numCol] == 0) {
+            board[i][numCol] = numPlayer;
+            break;
         }
-
-        cout << "Columna llena. Elige otra columna." << endl;
+    }
 }
 
 void Board::printBoard() {
 
-    for (int i = 0; i < 6; i++) {
+/*    for (int i = 0; i < 6; i++) {
         for (int j = 0; j < 7; j++) {
             if (board[i][j] == 0) {
-                cout << "  | ";
+                cout << "/";
             } else if (board[i][j] == 1) {
-                cout << "X | ";
+                cout << "X";
             } else if (board[i][j] == 2) {
-                cout << "O | ";
+                cout << "O";
             } else {
-                cout << "   ";
+                cout << "/";
             }
         }
         cout << "\n-----------------------------\n";
     }
     cout << "    1   2   3   4   5   6   7\n";
+*/
+    for (int i = 0; i < rows; i++)
+    {
+        for (int j = 0; j < cols; j++)
+        {
+            cout<< board[i][j]<< "  ";
+        }
 
+        cout << "\n" << endl;;
+        
+    }
+    
 }
+
 
 bool Board::checkWinner() {
 
@@ -117,7 +128,14 @@ bool Board::checkWinner() {
 
 bool Board::isColumnFull(int numCol) {
    
-    return board[rows - 1][numCol] == 0;
+    for (int i = rows; i >= 0; i--)
+    {
+        if (board[i][numCol] == 0) {
+            return true;
+        }
+    }
+    return false;
+    
 
 }
 
@@ -125,4 +143,19 @@ int Board::getPosition(int x, int y) { return board[x][y]; }
 
 int Board::getCols() { return cols;}
 
+/*void Board::copyBoard(Board& aux) {
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
+            this->board[i][j] = aux.board[i][j];
+        }
+    }
+}*/
+
+void Board::copyBoard(Board* aux) {
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
+            this->board[i][j] = aux->getPosition(i,j);
+        }
+    }
+}
 Board::~Board() {}

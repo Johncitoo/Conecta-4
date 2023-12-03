@@ -13,7 +13,7 @@ class Player {
 
     public:
 
-    Player(int dik);
+    Player(int disk);
     int getDisk();
     int getScore();
 };

@@ -17,6 +17,7 @@ class Board {
         bool isColumnFull(int numCol);
         int getCols();
         int getPosition(int f,int c);
+        void copyBoard(Board* board);
         ~Board();
 
 };
