@@ -7,11 +7,11 @@ using namespace std;
 
 Board::Board() {}
 
-void Board::addDisk(int numCol, Player* player) {
+void Board::addDisk(int numCol, int numPlayer) {
 
     for (int i = 5; i >= 0; --i) {
             if (board[i][numCol] == 0) {
-                board[i][numCol] = player->getDisk();
+                board[i][numCol] = numPlayer;
             }
         }
 
@@ -38,14 +38,11 @@ void Board::printBoard() {
 
 }
 
-bool Board::checkWinner(Player* player1, Player* player2) {
+bool Board::checkWinner() {
 
-    int player1ID = player1->getDisk();
-    int player2ID = player2->getDisk();
+    int player1ID = 1;
+    int player2ID = 2;
 
-    // (Código de verificación de ganadores)
-
-    // Verificar horizontalmente, verticalmente y en diagonales
     for (int i = 0; i < rows; i++) {
         for (int j = 0; j < cols - 3; j++) {
             if (board[i][j] == player1ID &&
@@ -123,5 +120,9 @@ bool Board::isColumnFull(int numCol) {
     return board[rows - 1][numCol] == 0;
 
 }
+
+int Board::getPosition(int x, int y) { return board[x][y]; }
+
+int Board::getCols() { return cols;}
 
 Board::~Board() {}

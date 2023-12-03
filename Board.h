@@ -11,10 +11,12 @@ class Board {
     
     public:
         Board();
-        void addDisk(int numCol,Player* player);
+        void addDisk(int numCol, int numPlayer);
         void printBoard();
-        bool checkWinner(Player* player1, Player* player2);
+        bool checkWinner();
         bool isColumnFull(int numCol);
+        int getCols();
+        int getPosition(int f,int c);
         ~Board();
 
 };
