@@ -18,9 +18,9 @@ Board::Board() {}
  * which player's disk should be added to the board.
  */
 void Board::addDisk(int numCol, int numPlayer) {
-    for (int i = rows; i >= 0; --i) {
-        if (board[i][numCol -1 ] == 0) {
-                board[i][numCol-1] = numPlayer;
+    for (int i = rows - 1; i >= 0; --i) {
+        if (board[i][numCol] == 0) {
+                board[i][numCol] = numPlayer;
             
             
             
@@ -44,7 +44,7 @@ void Board::printBoard() {
         
     }
 
-    cout << "[1,2,3,4,5,6,0]" << endl;
+    cout << "[0,1,2,3,4,5,6]" << endl;
     
 }
 
@@ -129,7 +129,8 @@ bool Board::checkWinner() {
             }
         }
     }
-
+    
+    
     return false;
 
 }
@@ -145,13 +146,10 @@ bool Board::checkWinner() {
  */
 bool Board::isColumnFull(int numCol) {
    
-    for (int i = rows - 1; i >= 0; i--)
-    {
-        if (board[i][numCol] == 0) {
-            return true;
-        }
+    if (board[0][numCol] != 0) {
+        return false;
     }
-    return false;
+    return true;
     
 
 }
