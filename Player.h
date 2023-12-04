@@ -16,4 +16,5 @@ class Player {
     Player(int disk);
     int getDisk();
     int getScore();
+    ~Player();
 };
